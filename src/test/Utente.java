@@ -3,6 +3,7 @@ package test;
 import java.util.Scanner;
 
 public class Utente {
+	//eclipse merda!
     public static void main(String[] args) {
     	Scanner scanner = new Scanner(System.in);
         final int MAX_PARTECIPANTI = 100;
