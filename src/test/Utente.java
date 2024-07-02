@@ -36,7 +36,6 @@ public class Utente {
             System.out.println("1. Visualizza partecipanti");
             System.out.println("2. Vota");
             System.out.println("3. Accesso gestore");
-            System.out.println("4. Esci");
             System.out.println("---------------------------------------------------------------");
 
             while (!scanner.hasNextInt()) {
@@ -108,6 +107,7 @@ public class Utente {
                         System.out.println("1. Aggiungi partecipante");
                         System.out.println("2. Visualizza risultati");
                         System.out.println("3. Visualizza statistiche votazioni");
+                        System.out.println("4. Chiusura Programma");
                         System.out.println("---------------------------------------------------------------");
                         while (!scanner.hasNextInt()) {
                         	System.out.println("---------------------------------------------------------------");
@@ -118,18 +118,36 @@ public class Utente {
                         int sceltaGestore = scanner.nextInt();
                         scanner.nextLine(); // Consuma la scelta rimasta
                         switch(sceltaGestore) {
-                        case 1:
+                        
+                        case 1://aggiungi partecipante
+                        	if(numeroPartecipanti==100) {
+                        		System.out.println("---------------------------------------------------------------");
+                                System.out.println("Non puoi inserire nuovi partecipanti!");
+                                System.out.println("---------------------------------------------------------------"); 
+                                break;
+                        	}
+                        	System.out.println("---------------------------------------------------------------");
+                            System.out.println("Inserisci nome e cognome del nuovo partecipante:");
+                            System.out.println("---------------------------------------------------------------");
+                            partecipanti[numeroPartecipanti]=scanner.nextLine();
+                            voti[numeroPartecipanti]=0;
+                            numeroPartecipanti++;
+                            String massimoRaggiunto=(numeroPartecipanti==100?"Non puoi aggiungere altri partecipanti.":"");
+                            System.out.println("---------------------------------------------------------------");
+                            System.out.println("Nuovo partecipante inserito. "+massimoRaggiunto);
+                            System.out.println("---------------------------------------------------------------");
                         	break;
+                        	
                         case 2://Visualizzazione risultati
-                        	for(int i=0;i<partecipanti.length;i++) {
-                    			if(partecipanti[i]==null) {
+                        	for(int i = 0; i < partecipanti.length; i++) {
+                    			if(partecipanti[i] == null) {
                     				break;
                     			}
-                    			System.out.println("# "+(int)(i+1)+"\nNome: "+partecipanti[i]+"\nVoti: "+voti[i]);
+                    			System.out.println("# "+ (int)(i + 1)+"\nNome: "+ partecipanti[i] + "\nVoti: " + voti[i]);
                     			
                     		}
-
                         	break;
+                        	
                         case 3://statistiche
                         	if (numeroPartecipanti == 0) {
                 				System.out.println("---------------------------------------------------------------");
@@ -137,53 +155,55 @@ public class Utente {
                                 System.out.println("---------------------------------------------------------------");
                                 break;
                             }
-                        	int votoMax=0;
-                        	int votoMin=voti[0]+1;
-                        	String vincitoreTemp="";
-                    		String perdenteTemp="";
-                    		for(int i=0;i<voti.length;i++) {
+                        	int votoMax = 0;
+                        	int votoMin = voti[0] + 1;
+                        	String vincitoreTemp = "";
+                    		String perdenteTemp = "";
+                    		for(int i = 0; i < voti.length; i++) {
                     			
-                    			if(partecipanti[i]==null) {//quando i partecipanti finiscono il ciclo si blocca
+                    			if(partecipanti[i] == null) {//quando i partecipanti finiscono il ciclo si blocca
                     				break;
                     			}
                     			//tutti i voti vengono ciclati messi in due diversi variabili il voto più alto e quello più basso
-                    			if(votoMax<voti[i]) {
-                    				votoMax=voti[i];
-                    				vincitoreTemp=partecipanti[i];
+                    			if(votoMax < voti[i]) {
+                    				votoMax = voti[i];
+                    				vincitoreTemp = partecipanti[i];
                     			}
-                    			else if(votoMax==voti[i]){
-                    				vincitoreTemp+=" e "+partecipanti[i];
+                    			else if(votoMax == voti[i]){
+                    				vincitoreTemp += " e " + partecipanti[i];
                     			}
-                    			if(votoMin>voti[i]) {
-                    				votoMin=voti[i];
-                    				perdenteTemp=partecipanti[i];
+                    			if(votoMin > voti[i]) {
+                    				votoMin = voti[i];
+                    				perdenteTemp = partecipanti[i];
                     			}
-                    			else if(votoMin==voti[i]){
-                    				perdenteTemp+=" e "+partecipanti[i];
+                    			else if(votoMin == voti[i]){
+                    				perdenteTemp += " e " + partecipanti[i];
                     			}
                     		}
                     		System.out.println("---------------------------------------------------------------");
-                        	System.out.println("Concorrente/i in testa: "+vincitoreTemp+" con "+votoMax+" voti;" );
+                        	System.out.println("Concorrente/i in testa: " + vincitoreTemp + " con " + votoMax + " voti;" );
                         	System.out.println("---------------------------------------------------------------");
-                        	System.out.println("Concorrente/i in coda: "+perdenteTemp+" con "+votoMin+" voti;" );
+                        	System.out.println("Concorrente/i in coda: " + perdenteTemp + " con " + votoMin + " voti;" );
                             System.out.println("---------------------------------------------------------------");
                         	break;
+                        	
+                        case 4: // Esci
+                        	System.out.println("---------------------------------------------------------------");
+                        	System.out.println("Chiusura del programma.");
+                        	System.out.println("---------------------------------------------------------------");
+                        	scanner.close();
+                        	return;
+                        	
                         default:
                         	System.out.println("---------------------------------------------------------------");
                         	System.out.println("Scelta non valida.");
                         	System.out.println("---------------------------------------------------------------");
-                        	break;                        }
+                        	break;
+                        }
                     
                     }  
-                    	
-                    
                     break;
-                case 4: // Esci
-                	System.out.println("---------------------------------------------------------------");
-                	System.out.println("Uscita dal programma.");
-                	System.out.println("---------------------------------------------------------------");
-                	scanner.close();
-                	return;
+              
                 default:
                 	System.out.println("---------------------------------------------------------------");
                 	System.out.println("Scelta non valida.");
