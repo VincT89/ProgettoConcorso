@@ -15,21 +15,21 @@ public class Utente {
         int numeroVotanti=0;
         
         //5 partecipanti già inseriti per i test
-//        numeroPartecipanti=5;
-//        partecipanti[0] = "Mario Rossi";
-//        voti[0] = 4;
-//
-//        partecipanti[1] = "Luigi Bianchi";
-//        voti[1] = 9;
-//
-//        partecipanti[2] = "Giovanni Verdi";
-//        voti[2] = 9;
-//
-//        partecipanti[3] = "Paolo Neri";
-//        voti[3] = 4;
-//
-//        partecipanti[4] = "Luca Russo";
-//        voti[4] = 4;
+        numeroPartecipanti=5;
+        partecipanti[0] = "Mario Rossi";
+        voti[0] = 4;
+
+        partecipanti[1] = "Luigi Bianchi";
+        voti[1] = 9;
+
+        partecipanti[2] = "Giovanni Verdi";
+        voti[2] = 9;
+
+        partecipanti[3] = "Paolo Neri";
+        voti[3] = 4;
+
+        partecipanti[4] = "Luca Russo";
+        voti[4] = 4;
 
         while (true) {
             System.out.println("Seleziona un'opzione:");
@@ -120,7 +120,15 @@ public class Utente {
                         switch(sceltaGestore) {
                         case 1:
                         	break;
-                        case 2:
+                        case 2://Visualizzazione risultati
+                        	for(int i=0;i<partecipanti.length;i++) {
+                    			if(partecipanti[i]==null) {
+                    				break;
+                    			}
+                    			System.out.println("# "+(int)(i+1)+"\nNome: "+partecipanti[i]+"\nVoti: "+voti[i]);
+                    			
+                    		}
+
                         	break;
                         case 3://statistiche
                         	if (numeroPartecipanti == 0) {
