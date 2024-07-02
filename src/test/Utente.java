@@ -6,9 +6,9 @@ public class Utente {
     public static void main(String[] args) {
     	Scanner scanner = new Scanner(System.in);
         final int MAX_PARTECIPANTI = 100;
-        String[] partecipanti = new String[MAX_PARTECIPANTI];
-        int[] voti = new int[MAX_PARTECIPANTI];
-        String passwordGestore = "ciao";
+        String[] partecipanti = new String[MAX_PARTECIPANTI]; // Array per memorizzare i nomi dei partecipanti
+        int[] voti = new int[MAX_PARTECIPANTI]; // Array per memorizzare i voti dei partecipanti , parallelo all'array partecipanti in modo che l'indice di un partecipante corrisponda all'indice del suo voto visto che il massimo numero di partecipanti e' 100
+        String passwordGestore = "ciao"; // Numero di partecipanti effettivi 
         
         int numeroPartecipanti = 0;
 
@@ -27,7 +27,7 @@ public class Utente {
                 scanner.next(); // Consuma l'input non valido
             }
             int scelta = scanner.nextInt();
-            scanner.nextLine(); // Consuma la newline rimanente
+            scanner.nextLine(); // Consuma la scelta che rimane in memoria
 
             switch (scelta) {
                 case 1: // Visualizza partecipanti
@@ -39,7 +39,7 @@ public class Utente {
                     } else {
                         for (int i = 0; i < numeroPartecipanti; i++) {
                         	System.out.println("---------------------------------------------------------------");
-                            System.out.println((i + 1) + ". " + partecipanti[i] + " - Voti: " + voti[i]);
+                            System.out.println((i + 1) + ". " + partecipanti[i]); // Stampa il nome del partecipante  preceduti dal numero del partecipante (ecco perche' i + 1)
                             System.out.println("---------------------------------------------------------------");
                         }
                     }
@@ -54,10 +54,10 @@ public class Utente {
                         System.out.println("---------------------------------------------------------------");
                         scanner.next(); // Consuma l'input non valido
                     }
-                    int indiceVoto = scanner.nextInt() - 1;
+                    int indiceVoto = scanner.nextInt() - 1; // Indice del partecipante da votare (parte da 0) e serve per accedere all'array partecipanti e voti per memorizzare il voto
                     scanner.nextLine(); // Consuma l'input 
-                    if (indiceVoto >= 0 && indiceVoto < numeroPartecipanti) {
-                        voti[indiceVoto]++;
+                    if (indiceVoto >= 0 && indiceVoto < numeroPartecipanti) { // Controllo che l'indice sia valido (compreso tra 0 e numeroPartecipanti - 1 cioe' il numero di partecipanti effettivi)
+                        voti[indiceVoto]++; // Incremento il voto del partecipante selezionato
                         System.out.println("---------------------------------------------------------------");
                         System.out.println("Hai votato per " + partecipanti[indiceVoto]);
                         System.out.println("---------------------------------------------------------------");
@@ -92,7 +92,7 @@ public class Utente {
                             scanner.next(); // Consuma l'input non valido
                         }
                         int sceltaGestore = scanner.nextInt();
-                        scanner.nextLine(); // Consuma la newline rimanente
+                        scanner.nextLine(); // Consuma la scelta rimasta
                         
                     
                     } else {
