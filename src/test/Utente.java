@@ -29,7 +29,7 @@ public class Utente {
         voti[3] = 4;
 
         partecipanti[4] = "Luca Russo";
-        voti[4] = 4;
+        voti[4] = 4 ;
 
         while (true) {
             System.out.println("Seleziona un'opzione:");
