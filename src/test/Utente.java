@@ -11,6 +11,24 @@ public class Utente {
         String passwordGestore = "ciao"; // Numero di partecipanti effettivi 
         
         int numeroPartecipanti = 0;
+        int numeroVotanti=0;
+        
+        //5 partecipanti già inseriti per i test
+//        numeroPartecipanti=5;
+//        partecipanti[0] = "Mario Rossi";
+//        voti[0] = 4;
+//
+//        partecipanti[1] = "Luigi Bianchi";
+//        voti[1] = 9;
+//
+//        partecipanti[2] = "Giovanni Verdi";
+//        voti[2] = 9;
+//
+//        partecipanti[3] = "Paolo Neri";
+//        voti[3] = 4;
+//
+//        partecipanti[4] = "Luca Russo";
+//        voti[4] = 4;
 
         while (true) {
             System.out.println("Seleziona un'opzione:");
@@ -78,7 +96,12 @@ public class Utente {
                         scanner.next(); // Consuma l'input non valido
                     }
                     String password = scanner.nextLine();
-                    if (password.equals(passwordGestore)) {
+                    if (!password.equals(passwordGestore)) {
+                    	System.out.println("---------------------------------------------------------------");
+                    	System.out.println("Password errata.");
+                    	System.out.println("---------------------------------------------------------------");
+                    }
+                    else {
                     	System.out.println("---------------------------------------------------------------");
                         System.out.println("Accesso gestore:");
                         System.out.println("1. Aggiungi partecipante");
@@ -93,13 +116,58 @@ public class Utente {
                         }
                         int sceltaGestore = scanner.nextInt();
                         scanner.nextLine(); // Consuma la scelta rimasta
-                        
+                        switch(sceltaGestore) {
+                        case 1:
+                        	break;
+                        case 2:
+                        	break;
+                        case 3://statistiche
+                        	if (numeroPartecipanti == 0) {
+                				System.out.println("---------------------------------------------------------------");
+                                System.out.println("Non ci sono partecipanti al momento.");
+                                System.out.println("---------------------------------------------------------------");
+                                break;
+                            }
+                        	int votoMax=0;
+                        	int votoMin=voti[0]+1;
+                        	String vincitoreTemp="";
+                    		String perdenteTemp="";
+                    		for(int i=0;i<voti.length;i++) {
+                    			
+                    			if(partecipanti[i]==null) {//quando i partecipanti finiscono il ciclo si blocca
+                    				break;
+                    			}
+                    			//tutti i voti vengono ciclati messi in due diversi variabili il voto più alto e quello più basso
+                    			if(votoMax<voti[i]) {
+                    				votoMax=voti[i];
+                    				vincitoreTemp=partecipanti[i];
+                    			}
+                    			else if(votoMax==voti[i]){
+                    				vincitoreTemp+=" e "+partecipanti[i];
+                    			}
+                    			if(votoMin>voti[i]) {
+                    				votoMin=voti[i];
+                    				perdenteTemp=partecipanti[i];
+                    			}
+                    			else if(votoMin==voti[i]){
+                    				perdenteTemp+=" e "+partecipanti[i];
+                    			}
+                    		}
+                    		System.out.println("---------------------------------------------------------------");
+                        	System.out.println("Concorrente/i in testa: "+vincitoreTemp+" con "+votoMax+" voti;" );
+                        	System.out.println("---------------------------------------------------------------");
+                        	System.out.println("Concorrente/i in coda: "+perdenteTemp+" con "+votoMin+" voti;" );
+                            System.out.println("---------------------------------------------------------------");
+                        	break;
+                        default:
+                        	System.out.println("---------------------------------------------------------------");
+                        	System.out.println("Scelta non valida.");
+                        	System.out.println("---------------------------------------------------------------");
+                        	break;                        }
                     
-                    } else {
-                    	System.out.println("---------------------------------------------------------------");
-                    	System.out.println("Password errata.");
-                    	System.out.println("---------------------------------------------------------------");
-                    }
+                    }  
+                    	
+                    
                     break;
                 case 4: // Esci
                 	System.out.println("---------------------------------------------------------------");
