@@ -124,7 +124,7 @@ public class Utente {
                         switch(sceltaGestore) {
                         
                         case 1:
-                        	if(numeroPartecipanti>=100) {//check per il massimo raggiunto
+                        	if(numeroPartecipanti >= 100) {//check per il massimo raggiunto
                         		System.out.println("---------------------------------------------------------------");
                                 System.out.println("Non puoi inserire nuovi partecipanti!");
                                 System.out.println("---------------------------------------------------------------"); 
@@ -133,11 +133,11 @@ public class Utente {
                         	System.out.println("---------------------------------------------------------------");
                             System.out.println("Inserisci nome e cognome del nuovo partecipante:");
                             System.out.println("---------------------------------------------------------------");
-                            String nuovoPartecipante=scanner.nextLine();
+                            String nuovoPartecipante = scanner.nextLine();
                             boolean giaPresente = false;//check per evitare nomi ripetuti
                             for(int i = 0; i < partecipanti.length; i++) {
                             	if(nuovoPartecipante.equalsIgnoreCase(partecipanti[i])) {                            		
-                                    giaPresente=true;
+                                    giaPresente = true;
                                     break;
                                     }
                             }
@@ -149,7 +149,7 @@ public class Utente {
                             voti[numeroPartecipanti] = 0;
                             partecipanti[numeroPartecipanti] = nuovoPartecipante;
                             numeroPartecipanti++;
-                            String massimoRaggiunto=(numeroPartecipanti == 100 ? "Non puoi aggiungere altri partecipanti." : "");
+                            String massimoRaggiunto = (numeroPartecipanti == 100 ? "Non puoi aggiungere altri partecipanti." : "");
                             System.out.println("---------------------------------------------------------------");
                             System.out.println("Nuovo partecipante inserito. " + massimoRaggiunto);
                             System.out.println("---------------------------------------------------------------");
@@ -167,7 +167,7 @@ public class Utente {
                     			if(partecipanti[i] == null) {
                     				break;
                     			}
-                    			System.out.println("# " + (int)(i + 1) + "\nNome: "+partecipanti[i] + "\nVoti: " + voti[i]);
+                    			System.out.println("# " + (int)(i + 1) + "\nNome: " + partecipanti[i] + "\nVoti: " + voti[i]);
                 				System.out.println("---------------------------------------------------------------");
                     		}
 
