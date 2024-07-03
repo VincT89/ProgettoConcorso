@@ -3,7 +3,7 @@ package test;
 import java.util.Scanner;
 
 public class Utente {
-	
+	//ciao
     public static void main(String[] args) {
     	Scanner scanner = new Scanner(System.in);
         final int MAX_PARTECIPANTI = 100;
@@ -12,7 +12,7 @@ public class Utente {
         String passwordGestore = "ciao"; // Numero di partecipanti effettivi 
         
         int numeroPartecipanti = 0;
-        int numeroVotanti=0;//tiene conto delle persone che votano
+        int numeroVotanti = 0;//tiene conto delle persone che votano
         
         //5 partecipanti già inseriti per i test
         numeroPartecipanti=5;
